@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "nombre": "Baño y Peluquería",
+    "descripcion": "Limpieza completa para tu mascota",
+    "imagen": "img/bano.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Veterinario",
+    "descripcion": "Atención médica profesional para tu mascota",
+    "imagen": "img/veterinario.jpg"
+  }
+]

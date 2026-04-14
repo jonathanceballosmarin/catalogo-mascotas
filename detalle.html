@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalle del Servicio</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <h1>🐾 PetCare</h1>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="favoritos.html">Favoritos</a>
+    <a href="contacto.html">Contacto</a>
+  </nav>
+</header>
+
+<section>
+  <h2 style="text-align:center;">Detalle del servicio</h2>
+  <div id="detalle" style="text-align:center;"></div>
+</section>
+
+<script>
+let id = localStorage.getItem("servicioId");
+
+// Validar si no hay ID
+if (!id) {
+  document.getElementById("detalle").innerHTML = "<p>No hay servicio seleccionado</p>";
+}
+
+// Cargar datos
+fetch('data/servicios.json')
+.then(res => res.json())
+.then(data => {
+
+  let servicio = data.find(s => s.id == id);
+
+  // Validar si no encuentra el servicio
+  if (!servicio) {
+    document.getElementById("detalle").innerHTML = "<p>Servicio no encontrado</p>";
+    return;
+  }
+
+  document.getElementById("detalle").innerHTML = `
+    <div class="card" style="margin:auto;">
+      <img src="${servicio.imagen}" width="300">
+      <h3>${servicio.nombre}</h3>
+      <p>${servicio.descripcion}</p>
+
+      <button onclick="agregarFavorito(${servicio.id})">❤️ Agregar a favoritos</button>
+    </div>
+  `;
+
+})
+.catch(error => {
+  console.error("Error:", error);
+});
+
+
+// ❤️ reutilizamos favoritos
+function agregarFavorito(id) {
+  let favoritos = JSON.parse(localStorage.getItem("favoritos")) || [];
+
+  if (!favoritos.includes(id)) {
+    favoritos.push(id);
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+    alert("🐾 Agregado a favoritos");
+  } else {
+    alert("⚠️ Ya está en favoritos");
+  }
+}
+</script>
+
+</body>
+</html>
