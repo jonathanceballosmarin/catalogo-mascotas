@@ -1,0 +1,23 @@
+<h2>⭐ Mis Favoritos</h2>
+
+<div class="container">
+
+  <div class="card" *ngFor="let f of favoritos">
+
+    <img [src]="f.imagen" width="100%">
+
+    <h3>{{ f.nombre }}</h3>
+
+    <p>{{ f.descripcion }}</p>
+
+    <button (click)="eliminarFavorito(f.id)">
+      ❌ Eliminar
+    </button>
+
+  </div>
+
+</div>
+
+<p *ngIf="favoritos.length === 0">
+  No tienes favoritos aún 😢
+</p>

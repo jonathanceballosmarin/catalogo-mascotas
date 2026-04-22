@@ -1,0 +1,13 @@
+<div *ngIf="servicio">
+
+  <h2>{{ servicio.nombre }}</h2>
+
+  <img [src]="servicio.imagen" width="300">
+
+  <p>{{ servicio.descripcion }}</p>
+
+  <button (click)="agregarFavorito()">
+    ⭐ Agregar a favoritos
+  </button>
+
+</div>

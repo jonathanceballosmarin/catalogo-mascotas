@@ -1,0 +1,17 @@
+<h2>Servicios para tu mascota 🐾</h2>
+
+<div class="container">
+  <div class="card" *ngFor="let servicio of servicios">
+
+    <img [src]="servicio.imagen" width="100%">
+
+    <h3>{{ servicio.nombre }}</h3>
+
+    <p>{{ servicio.descripcion }}</p>
+
+    <button [routerLink]="['/detalle', servicio.id]">
+      Ver más
+    </button>
+
+  </div>
+</div>

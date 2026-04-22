@@ -1,0 +1,40 @@
+<h2>📞 Contáctanos</h2>
+
+<form (ngSubmit)="enviarFormulario()" #form="ngForm">
+
+  <label>Nombre:</label>
+  <input 
+    type="text" 
+    name="nombre"
+    [(ngModel)]="nombre"
+    required
+  >
+
+  <br><br>
+
+  <label>Email:</label>
+  <input 
+    type="email" 
+    name="email"
+    [(ngModel)]="email"
+    required
+  >
+
+  <br><br>
+
+  <label>Mensaje:</label>
+  <textarea 
+    name="mensaje"
+    [(ngModel)]="mensaje"
+    required
+  ></textarea>
+
+  <br><br>
+
+  <button type="submit">Enviar</button>
+
+</form>
+
+<p *ngIf="enviado">
+  ✅ Mensaje enviado correctamente
+</p>
